@@ -1,0 +1,39 @@
+{
+  "stt": {
+    "hindi": {
+      "model_file": "stt_hi_int8.onnx",
+      "tokens_file": "tokens_hi.txt",
+      "sample_rate": 16000,
+      "quantization": "INT8",
+      "size_mb": 48.5
+    },
+    "marathi": {
+      "model_file": "stt_mr_int8.onnx",
+      "tokens_file": "tokens_mr.txt",
+      "sample_rate": 16000,
+      "quantization": "INT8",
+      "size_mb": 42.0
+    },
+    "english": {
+      "model_file": "stt_en_int8.onnx",
+      "tokens_file": "tokens_en.txt",
+      "sample_rate": 16000,
+      "quantization": "INT8",
+      "size_mb": 35.0
+    }
+  },
+  "tts": {
+    "hindi": {
+      "model_file": "tts_hi_vits.onnx",
+      "size_mb": 32.2
+    },
+    "marathi": {
+      "model_file": "tts_mr_vits.onnx",
+      "size_mb": 30.5
+    },
+    "english": {
+      "model_file": "tts_en_vits.onnx",
+      "size_mb": 25.0
+    }
+  }
+}
