@@ -65,14 +65,16 @@ object ProtocolEncoder {
      * Encode TextPacket into binary Byte array frame.
      * Frame layout:
      * [2 bytes MAGIC] [4 bytes SEQ] [1 byte PRIORITY] [1 byte MSG_TYPE] [8 bytes TIMESTAMP]
-     * [1 byte LANG_LEN] [LANG_BYTES] [1 byte SENDER_LEN] [SENDER_BYTES] [4 bytes PAYLOAD_LEN] [COMPRESSED_PAYLOAD] [4 bytes CHECKSUM]
+     * [1 byte LANG_LEN] [LANG_BYTES] [1 byte TARGET_LANG_LEN] [TARGET_LANG_BYTES]
+     * [1 byte SENDER_LEN] [SENDER_BYTES] [4 bytes PAYLOAD_LEN] [COMPRESSED_PAYLOAD] [4 bytes CHECKSUM]
      */
     fun encode(packet: TextPacket): ByteArray {
         val compressedPayload = compressText(packet.payload)
         val langBytes = packet.language.toByteArray(StandardCharsets.UTF_8)
+        val targetLangBytes = packet.targetLanguage.toByteArray(StandardCharsets.UTF_8)
         val senderBytes = packet.senderName.toByteArray(StandardCharsets.UTF_8)
 
-        val bodySize = 2 + 4 + 1 + 1 + 8 + 1 + langBytes.size + 1 + senderBytes.size + 4 + compressedPayload.size
+        val bodySize = 2 + 4 + 1 + 1 + 8 + 1 + langBytes.size + 1 + targetLangBytes.size + 1 + senderBytes.size + 4 + compressedPayload.size
         val buffer = ByteBuffer.allocate(bodySize)
 
         buffer.putShort(HEADER_MAGIC)
@@ -83,6 +85,9 @@ object ProtocolEncoder {
         
         buffer.put(langBytes.size.toByte())
         buffer.put(langBytes)
+
+        buffer.put(targetLangBytes.size.toByte())
+        buffer.put(targetLangBytes)
 
         buffer.put(senderBytes.size.toByte())
         buffer.put(senderBytes)
@@ -105,7 +110,7 @@ object ProtocolEncoder {
      * Validates CRC32 checksum.
      */
     fun decode(frame: ByteArray): TextPacket {
-        require(frame.size >= 24) { "Frame size too small: ${frame.size} bytes" }
+        require(frame.size >= 25) { "Frame size too small: ${frame.size} bytes" }
 
         val bodySize = frame.size - 4
         val bodyData = frame.copyOfRange(0, bodySize)
@@ -133,6 +138,11 @@ object ProtocolEncoder {
         readBuffer.get(langBytes)
         val language = String(langBytes, StandardCharsets.UTF_8)
 
+        val targetLangLen = readBuffer.get().toInt() and 0xFF
+        val targetLangBytes = ByteArray(targetLangLen)
+        readBuffer.get(targetLangBytes)
+        val targetLanguage = String(targetLangBytes, StandardCharsets.UTF_8)
+
         val senderLen = readBuffer.get().toInt() and 0xFF
         val senderBytes = ByteArray(senderLen)
         readBuffer.get(senderBytes)
@@ -148,6 +158,7 @@ object ProtocolEncoder {
             sequenceNumber = seq,
             senderName = senderName,
             language = language,
+            targetLanguage = targetLanguage,
             priority = priority,
             messageType = msgType,
             timestamp = timestamp,

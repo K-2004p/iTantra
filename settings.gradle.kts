@@ -22,6 +22,9 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
+        // Vosk Android offline speech recognizer (Kaldi-based, supports Indian languages)
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://alphacephei.com/maven/") }
     }
 }
 

@@ -41,7 +41,8 @@ data class TextPacket(
     val messageId: String,
     val sequenceNumber: Int,
     val senderName: String,
-    val language: String,
+    val language: String, // Source language (e.g. "mr")
+    val targetLanguage: String = "", // Intended destination language (e.g. "hi")
     val priority: PriorityLevel = PriorityLevel.NORMAL,
     val messageType: MessageType = MessageType.TEXT_MESSAGE,
     val timestamp: Long = System.currentTimeMillis(),

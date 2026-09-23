@@ -2,17 +2,29 @@ package com.itantra.app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val TechDarkBackground = Color(0xFF0B0F19)
-val TechCardSurface = Color(0xFF141B2D)
-val TechBorder = Color(0xFF222F4A)
+// Deep Space & Tactical Navy Backgrounds
+val TechDarkBackground = Color(0xFF090D16)
+val TechCardSurface = Color(0xFF111726)
+val TechCardSurfaceElevated = Color(0xFF172033)
+val TechCardSurfaceLight = Color(0xFF1E2A42)
+val TechBorder = Color(0xFF22304C)
+val TechBorderGlow = Color(0xFF2D4168)
 
+// Vibrant Neon Accents
 val NeonCyan = Color(0xFF00E5FF)
-val NeonCyanDark = Color(0xFF00838F)
+val NeonCyanDark = Color(0xFF0097A7)
+val NeonCyanSubtle = Color(0x1A00E5FF)
 
-val AmberAlert = Color(0xFFFF9800)
-val EmergencyRed = Color(0xFFFF1744)
+// Status & Priority Accents
+val AmberAlert = Color(0xFFFFAB00)
+val AmberAlertSubtle = Color(0x26FFAB00)
+val EmergencyRed = Color(0xFFFF2D55)
+val EmergencyRedSubtle = Color(0x26FF2D55)
 val SuccessGreen = Color(0xFF00E676)
+val SuccessGreenSubtle = Color(0x2600E676)
 
-val TextPrimary = Color(0xFFF0F4F8)
-val TextSecondary = Color(0xFF8E9BAE)
-val TextMuted = Color(0xFF5A6982)
+// Typography & Text
+val TextPrimary = Color(0xFFF8FAFC)
+val TextSecondary = Color(0xFF94A3B8)
+val TextMuted = Color(0xFF64748B)
+val TextInverse = Color(0xFF090D16)

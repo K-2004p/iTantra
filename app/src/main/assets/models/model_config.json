@@ -1,39 +1,41 @@
 {
+  "version": "2.0",
+  "note": "AI4Bharat IndicTTS / IndicConformer ONNX INT8 quantized models. Base APK < 15MB. On-demand per-language download.",
   "stt": {
-    "hindi": {
-      "model_file": "stt_hi_int8.onnx",
-      "tokens_file": "tokens_hi.txt",
-      "sample_rate": 16000,
-      "quantization": "INT8",
-      "size_mb": 48.5
-    },
-    "marathi": {
-      "model_file": "stt_mr_int8.onnx",
-      "tokens_file": "tokens_mr.txt",
-      "sample_rate": 16000,
-      "quantization": "INT8",
-      "size_mb": 42.0
-    },
-    "english": {
-      "model_file": "stt_en_int8.onnx",
-      "tokens_file": "tokens_en.txt",
-      "sample_rate": 16000,
-      "quantization": "INT8",
-      "size_mb": 35.0
-    }
+    "en": { "model_file": "stt_en_int8.onnx",  "tokens_file": "tokens_en.txt",  "sample_rate": 16000, "quantization": "INT8", "size_mb": 35.0 },
+    "hi": { "model_file": "stt_hi_int8.onnx",  "tokens_file": "tokens_hi.txt",  "sample_rate": 16000, "quantization": "INT8", "size_mb": 48.5 },
+    "mr": { "model_file": "stt_mr_int8.onnx",  "tokens_file": "tokens_mr.txt",  "sample_rate": 16000, "quantization": "INT8", "size_mb": 42.0 },
+    "gu": { "model_file": "stt_gu_int8.onnx",  "tokens_file": "tokens_gu.txt",  "sample_rate": 16000, "quantization": "INT8", "size_mb": 44.0 },
+    "kn": { "model_file": "stt_kn_int8.onnx",  "tokens_file": "tokens_kn.txt",  "sample_rate": 16000, "quantization": "INT8", "size_mb": 46.2 },
+    "ml": { "model_file": "stt_ml_int8.onnx",  "tokens_file": "tokens_ml.txt",  "sample_rate": 16000, "quantization": "INT8", "size_mb": 45.0 },
+    "ta": { "model_file": "stt_ta_int8.onnx",  "tokens_file": "tokens_ta.txt",  "sample_rate": 16000, "quantization": "INT8", "size_mb": 49.0 },
+    "te": { "model_file": "stt_te_int8.onnx",  "tokens_file": "tokens_te.txt",  "sample_rate": 16000, "quantization": "INT8", "size_mb": 47.8 },
+    "or": { "model_file": "stt_or_int8.onnx",  "tokens_file": "tokens_or.txt",  "sample_rate": 16000, "quantization": "INT8", "size_mb": 41.5 },
+    "bn": { "model_file": "stt_bn_int8.onnx",  "tokens_file": "tokens_bn.txt",  "sample_rate": 16000, "quantization": "INT8", "size_mb": 43.8 }
   },
   "tts": {
-    "hindi": {
-      "model_file": "tts_hi_vits.onnx",
-      "size_mb": 32.2
-    },
-    "marathi": {
-      "model_file": "tts_mr_vits.onnx",
-      "size_mb": 30.5
-    },
-    "english": {
-      "model_file": "tts_en_vits.onnx",
-      "size_mb": 25.0
-    }
+    "en": { "model_file": "tts_en_vits.onnx",  "sample_rate": 22050, "size_mb": 25.0 },
+    "hi": { "model_file": "tts_hi_vits.onnx",  "sample_rate": 22050, "size_mb": 32.2 },
+    "mr": { "model_file": "tts_mr_vits.onnx",  "sample_rate": 22050, "size_mb": 30.5 },
+    "gu": { "model_file": "tts_gu_vits.onnx",  "sample_rate": 22050, "size_mb": 28.0 },
+    "kn": { "model_file": "tts_kn_vits.onnx",  "sample_rate": 22050, "size_mb": 31.0 },
+    "ml": { "model_file": "tts_ml_vits.onnx",  "sample_rate": 22050, "size_mb": 33.0 },
+    "ta": { "model_file": "tts_ta_vits.onnx",  "sample_rate": 22050, "size_mb": 34.5 },
+    "te": { "model_file": "tts_te_vits.onnx",  "sample_rate": 22050, "size_mb": 32.0 },
+    "or": { "model_file": "tts_or_vits.onnx",  "sample_rate": 22050, "size_mb": 29.0 },
+    "bn": { "model_file": "tts_bn_vits.onnx",  "sample_rate": 22050, "size_mb": 30.2 }
+  },
+  "translation": {
+    "pack_file": "translation_pack_v2.bin",
+    "size_mb": 1.8,
+    "note": "Lightweight offline dictionary + neural translation for 10x10 language pairs"
+  },
+  "budget_device_config": {
+    "base_apk_mb": 14.5,
+    "min_ram_mb": 150,
+    "on_demand_models": true,
+    "preloaded_language": "hi",
+    "max_concurrent_models": 1,
+    "model_cache_strategy": "lru_single"
   }
 }

@@ -13,6 +13,23 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
+        buildConfigField("String", "DEFAULT_ROLE", "\"TRANSCEIVER\"")
+    }
+
+    flavorDimensions += listOf("role")
+    productFlavors {
+        create("sender") {
+            dimension = "role"
+            applicationIdSuffix = ".sender"
+            versionNameSuffix = "-sender"
+            buildConfigField("String", "DEFAULT_ROLE", "\"SENDER\"")
+        }
+        create("receiver") {
+            dimension = "role"
+            applicationIdSuffix = ".receiver"
+            versionNameSuffix = "-receiver"
+            buildConfigField("String", "DEFAULT_ROLE", "\"RECEIVER\"")
+        }
     }
 
     buildTypes {
@@ -33,8 +50,10 @@ android {
     packaging {
       resources {
         excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        pickFirsts += "**/libvosk.so"
       }
     }
+
 }
 
 kotlin {
@@ -63,6 +82,13 @@ dependencies {
 
   // ONNX Runtime Mobile for On-Device STT/TTS models
   implementation(libs.onnxruntime.android)
+
+  // Vosk Offline Speech Recognition (Kaldi-based, 100% on-device, no internet)
+  // Supports Hindi and Indian English out of the box. Models downloaded at runtime.
+  implementation(libs.vosk.android)
+
+  // Google ML Kit On-Device Translation (100% Offline with downloaded models)
+  implementation(libs.google.mlkit.translate)
 
   // Tooling
   debugImplementation(libs.androidx.compose.ui.tooling)
