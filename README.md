@@ -214,37 +214,36 @@ Hear Speech
 
 ## 📸 Outputs / Screenshots
 
-### Sender Home
+### Sender & Receiver
 
-![Sender Home](images/sender_home.jpg)
-
-### Receiver Home
-
-![Receiver Home](images/reciever_home.jpg)
+<p align="center">
+  <img src="images/sender_home.jpg" width="220">
+  <img src="images/reciever_home.jpg" width="220">
+</p>
 
 ### Sender Translation
 
-![Sender Translation 1](images/sender_tra1.jpg)
-
-![Sender Translation 2](images/sender_tra2.jpg)
-
-![Sender Translation 3](images/sender_tra3.jpg)
+<p align="center">
+  <img src="images/sender_tra1.jpg" width="180">
+  <img src="images/sender_tra2.jpg" width="180">
+  <img src="images/sender_tra3.jpg" width="180">
+</p>
 
 ### Translation
 
-![Translation 1](images/transalation1.jpg)
+<p align="center">
+  <img src="images/transalation1.jpg" width="180">
+  <img src="images/transaltion2.jpg" width="180">
+  <img src="images/transaltion3.jpg" width="180">
+</p>
 
-![Translation 2](images/transaltion2.jpg)
+### Emergency & Performance
 
-![Translation 3](images/transaltion3.jpg)
+<p align="center">
+  <img src="images/emergency.jpg" width="220">
+  <img src="images/metrics.jpg" width="220">
+</p>
 
-### Emergency Communication
-
-![Emergency](images/emergency.jpg)
-
-### Performance Metrics
-
-![Metrics](images/metrics.jpg)
 
 ---
 
