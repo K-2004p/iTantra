@@ -2,15 +2,13 @@
 
 ### Indian Multilingual Offline Neural Transceiver for Low-Bitrate Communication
 
-iTantra is an **Android-based, offline multilingual communication system** developed for **SIH 2026 Problem Statement 26173 by ISRO**.
+iTantra is an **Android-based offline multilingual communication system** developed for **SIH 2026 Problem Statement 26173 by ISRO**.
 
-The application enables two Android devices to communicate using **speech-to-text and text-to-speech**, allowing voice communication over low-bandwidth local connections without requiring Internet connectivity.
+It enables two Android devices to communicate through **offline speech-to-text, compact text transmission, and offline text-to-speech**, reducing the amount of data required compared with transmitting raw audio.
 
 ---
 
-## 🚀 Core Concept
-
-Instead of transmitting voice/audio directly:
+## 🚀 How It Works
 
 ```text
 🎙️ Sender Speech
@@ -28,24 +26,23 @@ Instead of transmitting voice/audio directly:
 🔊 Receiver Speech
 ```
 
-This significantly reduces the amount of data that needs to be transmitted compared with raw audio communication.
+The system transmits **text instead of raw voice/audio**, making communication more suitable for constrained or low-bandwidth links.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-* 🎙️ **Offline Speech-to-Text (STT)**
-* 🔊 **Offline Text-to-Speech (TTS)**
-* 📡 **Low-bandwidth text-based communication**
-* 📱 **Android-to-Android communication**
-* 📴 **No Internet dependency**
-* 🎙️ **Push-to-Talk / Walkie-Talkie mode**
-* 💬 **Real-time speech communication**
-* 🌐 Support architecture for **10 Indian languages + English**
-* 🚨 **Emergency/priority message handling**
+* 🎙️ Offline Speech-to-Text (STT)
+* 🔊 Offline Text-to-Speech (TTS)
+* 📡 Low-bandwidth text-based communication
+* 📱 Android-to-Android communication
+* 📴 No Internet dependency for the core communication pipeline
+* 🎙️ Push-to-Talk communication
+* 🌐 Support architecture for Indian languages
+* 🚨 Emergency / priority message handling
 * ⚡ Low-latency communication
-* 💾 Lightweight on-device AI processing
-* 📊 Performance and latency monitoring
+* 💾 On-device AI processing
+* 📊 Communication and performance monitoring
 
 ---
 
@@ -66,7 +63,7 @@ The application is designed for:
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ System Architecture
 
 ```text
                     iTANTRA
@@ -93,88 +90,61 @@ The application is designed for:
 
 ### Android
 
-* **Kotlin**
-* **Android SDK**
-* **Jetpack Compose / Android UI**
-* **Gradle**
+* Kotlin
+* Android SDK
+* Jetpack Compose
+* Gradle
 
 ### AI / ML
 
 * On-device Speech-to-Text
 * On-device Text-to-Speech
 * Open-source ML models
-* ONNX Runtime / LiteRT for mobile inference
-* Model quantization and optimization
+* Model optimization and quantization
 
 ### Communication
 
 * Local Wi-Fi
-* Wi-Fi Direct
 * Bluetooth
 * Text-based packet transmission
 
 ### Development
 
 * Android Studio
-* Cursor
 * Git
 * GitHub
 
 ---
 
-## 🔐 Offline-First Design
+## 📡 Communication Flow
 
-iTantra is designed to operate without Internet connectivity.
-
-The STT and TTS models run directly on the Android device.
-
-```text
-Internet
-   ❌
-   │
-   X
-   │
-Android Device
- ├── STT Model
- ├── TTS Model
- └── Communication Module
-```
-
-No cloud-based speech APIs are required for the core communication pipeline.
-
----
-
-## 📡 Communication Model
-
-The system does **not transmit raw speech audio** during normal communication.
-
-Instead:
+iTantra does not transmit raw speech audio during normal communication.
 
 ```text
 Speech
   ↓
-STT
+Offline STT
   ↓
 Text
   ↓
 Compact Packet
   ↓
-Local Wireless Network
+Local Wireless Connection
   ↓
 Text
   ↓
-TTS
+Offline TTS
   ↓
 Speech
 ```
 
-This allows the system to operate efficiently over constrained communication links.
+This approach reduces the amount of data that needs to be transmitted over the communication link.
 
 ---
 
-## 🎙️ Push-to-Talk Mode
+## 🎙️ Push-to-Talk
 
-The sender can hold a **Push-to-Talk** button to communicate.
+The sender uses a Push-to-Talk interface:
 
 ```text
 HOLD
@@ -190,17 +160,19 @@ Transmit Text
 Release
 ```
 
-The receiver automatically converts the received text into speech.
+The receiver converts the received text into speech using on-device TTS.
 
 ---
 
 ## 🚨 Emergency Communication
 
-iTantra supports priority-based messages.
+iTantra supports priority-based communication:
 
 ```text
 NORMAL
+   ↓
 IMPORTANT
+   ↓
 EMERGENCY
 ```
 
@@ -208,76 +180,94 @@ Emergency messages can be prioritized for faster transmission and immediate audi
 
 ---
 
-## ⚡ Performance Goals
+## 📱 Two-Device Demonstration
 
-The system is designed to optimize:
-
-* STT accuracy
-* TTS intelligibility
-* End-to-end latency
-* Model size
-* RAM consumption
-* CPU utilization
-* Real-Time Factor (RTF)
-* Communication bandwidth
-
-All performance values should be measured on the target Android hardware rather than hardcoded.
-
----
-
-## 📂 Project Structure
+### Device A — Sender
 
 ```text
-iTantra/
-│
-├── app/
-│   ├── src/
-│   │   └── main/
-│   │       ├── java/
-│   │       ├── res/
-│   │       └── AndroidManifest.xml
-│   │
-│   ├── build.gradle
-│   └── proguard-rules.pro
-│
-├── models/
-│   ├── stt/
-│   └── tts/
-│
-├── gradle/
-├── build.gradle
-├── settings.gradle
-└── README.md
+Select SENDER
+      ↓
+Select Language
+      ↓
+Connect to Receiver
+      ↓
+Hold to Talk
+      ↓
+Speak
+```
+
+### Device B — Receiver
+
+```text
+Select RECEIVER
+      ↓
+Connect to Sender
+      ↓
+Receive Text
+      ↓
+Offline TTS
+      ↓
+Hear Speech
 ```
 
 ---
 
-## ⚙️ Installation
+## 📸 Outputs / Screenshots
+
+### Sender Home
+
+![Sender Home](images/sender_home.jpg)
+
+### Receiver Home
+
+![Receiver Home](images/reciever_home.jpg)
+
+### Sender Translation
+
+![Sender Translation 1](images/sender_tra1.jpg)
+
+![Sender Translation 2](images/sender_tra2.jpg)
+
+![Sender Translation 3](images/sender_tra3.jpg)
+
+### Translation
+
+![Translation 1](images/transalation1.jpg)
+
+![Translation 2](images/transaltion2.jpg)
+
+![Translation 3](images/transaltion3.jpg)
+
+### Emergency Communication
+
+![Emergency](images/emergency.jpg)
+
+### Performance Metrics
+
+![Metrics](images/metrics.jpg)
+
+---
+
+## 📥 Installation
 
 ### Requirements
 
 * Android Studio
 * Android SDK
-* Android device or Android Emulator
+* Android device or emulator
 * Android 8.0+ recommended
 * Sufficient storage for local AI models
 
 ### Clone Repository
 
 ```bash
-git clone https://github.com/K-2004p/iTantra_app.git
-cd iTantra_app
+git clone https://github.com/K-2004p/iTantra.git
+cd iTantra
 ```
 
 ### Build
 
 Open the project in Android Studio and allow Gradle to synchronize.
-
-Then:
-
-```bash
-./gradlew assembleDebug
-```
 
 For Windows:
 
@@ -288,78 +278,31 @@ For Windows:
 The generated APK will be available under:
 
 ```text
-app/build/outputs/apk/debug/
+app/build/outputs/apk/
 ```
 
 ---
 
-## 📱 Two-Device Demonstration
+## 📊 Presentation
 
-### Device A — Sender
-
-```text
-Select: SENDER
-Select Language
-Connect to Receiver
-Press HOLD TO TALK
-Speak
-```
-
-### Device B — Receiver
-
-```text
-Select: RECEIVER
-Connect to Sender
-Receive Text
-Offline TTS
-Hear Speech
-```
-
-### Complete Flow
-
-```text
-        DEVICE A
-     🎙️ Speak
-         ↓
-     Offline STT
-         ↓
-        TEXT
-         ↓
-   Local Wi-Fi / BT
-         ↓
-        TEXT
-         ↓
-     Offline TTS
-         ↓
-     🔊 DEVICE B
-```
-
----
-
-## 🔒 Privacy
-
-All speech processing is intended to happen locally on the device.
-
-The application does not require uploading voice recordings to external servers for the core STT/TTS pipeline.
+**Project PPT:**
+`[ADD PPT LINK HERE]`
 
 ---
 
 ## 🎯 SIH 2026 Alignment
 
 **Problem Statement:** 26173
-
 **Organization:** Indian Space Research Organisation (ISRO)
-
-**Objective:** Build a lightweight multilingual STT/TTS aided neural transceiver capable of operating over low-bitrate links.
 
 iTantra focuses on:
 
-* Offline AI
-* Indian-language speech processing
+* Offline multilingual speech processing
 * Low-bandwidth communication
 * Real-time communication
 * Lightweight edge inference
 * Android deployment
+* Text-based transmission instead of raw audio
 
 ---
 
